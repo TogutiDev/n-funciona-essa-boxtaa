@@ -1,0 +1,792 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #5d5148 transparent;
+}
+
+/* 2. WebKit Pseudo-elements (Chrome, Safari, Edge) - Applied to the actual scrollable items */
+.html::-webkit-scrollbar {
+  width: 2px; /* Slightly increased to 4px so it remains clickable since it's thin */
+  height: 4px;
+}
+
+.html::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 6px;
+}
+
+.html::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  /* REMOVED the 3px border because it was wider than your 2px scrollbar width, causing it to disappear */
+}
+
+/* =========================
+ BODY
+========================= */
+
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  font-family: 'Segoe UI', Arial, sans-serif;
+
+  min-height: 100vh;
+
+  background: #d9c7a7;
+
+  color: #3d342b;
+}
+
+/* =========================
+ APLICAÇÃO
+========================= */
+
+.app {
+  width: 90%;
+  max-width: 1100px;
+
+  margin: 50px auto;
+}
+
+/* =========================
+ TOPO
+========================= */
+
+.topo {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 35px;
+}
+
+.subtitulo {
+  display: block;
+
+  margin-bottom: 4px;
+
+  font-size: 11px;
+
+  letter-spacing: 4px;
+
+  color: #9b6b53;
+}
+
+.topo h1 {
+  font-family: Georgia, serif;
+
+  font-size: 42px;
+
+  line-height: 1;
+
+  color: #49372c;
+}
+
+/* =========================
+ CONTADOR DE PÁGINAS
+========================= */
+
+.contador-paginas {
+  display: inline-block;
+
+  margin-top: 10px;
+
+  padding: 5px 11px;
+
+  border-radius: 20px;
+
+  background: #eee4d2;
+
+  color: #8b6c56;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+/* =========================
+ BOTÃO +
+========================= */
+
+.btn-adicionar {
+  width: 58px;
+  height: 58px;
+
+  border: none;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #9b6b53;
+
+  color: white;
+
+  font-size: 22px;
+
+  cursor: pointer;
+
+  box-shadow: 0 5px 10px rgba(70, 45, 30, 0.25);
+
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+
+.btn-adicionar:hover {
+  background: #7e5140;
+
+  transform: rotate(90deg) scale(1.08);
+
+  box-shadow: 0 8px 15px rgba(70, 45, 30, 0.3);
+}
+
+.btn-adicionar:active {
+  transform: scale(0.95);
+}
+
+/* =========================
+ LISTA DE NOTAS
+========================= */
+
+.lista-notas {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+  gap: 30px;
+}
+
+/* =========================
+ NOTA / FOLHA
+========================= */
+
+.nota {
+  scrollbar-width: thin;
+  scrollbar-color: #5d5148 transparent;
+
+  position: relative;
+
+  min-height: 230px;
+  max-height: 230px;
+
+  padding: 28px 25px 25px 55px;
+
+  background-color: #fffdf3;
+
+  border-radius: 3px;
+
+  overflow: auto;
+
+  box-shadow: 3px 5px 0 rgba(100, 70, 50, 0.08),
+    8px 12px 20px rgba(70, 45, 30, 0.18);
+
+  transform: rotate(-0.5deg);
+
+  transition: transform 0.25s, box-shadow 0.25s, opacity 0.2s;
+}
+
+.nota::-webkit-scrollbar {
+  width: 1px; /* Slightly increased to 4px so it remains clickable since it's thin */
+  height: 4px;
+}
+
+.nota::-webkit-scrollbar-track {
+  background: none;
+  border-radius: 6px;
+}
+
+.nota::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  /* REMOVED the 3px border because it was wider than your 2px scrollbar width, causing it to disappear */
+}
+
+/* Alternar inclinação */
+
+.nota:nth-child(even) {
+  transform: rotate(0.7deg);
+}
+
+.nota:nth-child(3n) {
+  transform: rotate(-0.2deg);
+}
+
+/* Hover */
+
+.nota:hover {
+  transform: rotate(0deg) translateY(-5px);
+
+  box-shadow: 4px 8px 0 rgba(100, 70, 50, 0.08),
+    10px 18px 25px rgba(70, 45, 30, 0.22);
+}
+
+/* =========================
+ LINHAS DO CADERNO
+========================= */
+
+.nota::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 31px,
+    #d8e2e5 32px
+  );
+
+  pointer-events: none;
+}
+
+/* =========================
+ MARGEM VERMELHA
+========================= */
+
+.nota::after {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  left: 40px;
+
+  width: 1px;
+
+  background: #e6aaa0;
+
+  box-shadow: 5px 0 0 rgba(230, 170, 160, 0.12);
+
+  pointer-events: none;
+}
+
+/* =========================
+ HEADER DA NOTA
+========================= */
+
+.nota-header {
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.nota-header h2 {
+  font-family: Georgia, serif;
+
+  font-size: 21px;
+
+  line-height: 1.3;
+
+  color: #4b392e;
+
+  word-break: break-word;
+}
+
+/* =========================
+ AÇÕES DA NOTA
+========================= */
+
+.acoes {
+  display: flex;
+
+  gap: 6px;
+
+  flex-shrink: 0;
+}
+
+.btn {
+  width: 30px;
+  height: 30px;
+
+  border: none;
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn-editar {
+  background: #c89b5c;
+}
+
+.btn-excluir {
+  background: #b96b62;
+}
+
+.btn-editar:hover {
+  background: #a97d43;
+
+  transform: scale(1.1);
+}
+
+.btn-excluir:hover {
+  background: #984d45;
+
+  transform: scale(1.1);
+}
+
+/* =========================
+ TEXTO DA NOTA
+========================= */
+
+.nota p {
+  position: relative;
+
+  z-index: 1;
+
+  font-family: 'Segoe Print', 'Comic Sans MS', cursive;
+
+  font-size: 15px;
+
+  line-height: 32px;
+
+  color: #5d5148;
+
+  white-space: pre-wrap;
+
+  word-break: break-word;
+}
+
+/* =========================
+ MODAL
+========================= */
+
+.modal {
+  position: fixed;
+
+  inset: 0;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  background: rgba(55, 40, 30, 0.55);
+
+  backdrop-filter: blur(4px);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition: opacity 0.25s, visibility 0.25s;
+
+  z-index: 1000;
+}
+
+.modal.aberto {
+  opacity: 1;
+
+  visibility: visible;
+}
+
+/* =========================
+ CONTEÚDO DO MODAL
+========================= */
+
+.modal-content {
+  width: 100%;
+  max-width: 520px;
+
+  padding: 28px;
+
+  background: #fffdf3;
+
+  border-radius: 5px;
+
+  box-shadow: 0 20px 50px rgba(40, 25, 15, 0.3);
+
+  transform: translateY(20px) scale(0.97);
+
+  transition: transform 0.25s;
+}
+
+.modal.aberto .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+/* =========================
+ HEADER DO MODAL
+========================= */
+
+.modal-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-bottom: 25px;
+}
+
+.modal-subtitulo {
+  display: block;
+
+  font-size: 10px;
+
+  letter-spacing: 3px;
+
+  color: #9b6b53;
+}
+
+.modal-header h2 {
+  margin-top: 5px;
+
+  font-family: Georgia, serif;
+
+  font-size: 27px;
+
+  color: #49372c;
+}
+
+/* =========================
+ BOTÃO FECHAR
+========================= */
+
+.btn-fechar {
+  width: 35px;
+  height: 35px;
+
+  border: none;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eee4d2;
+
+  color: #806c5d;
+
+  cursor: pointer;
+
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-fechar:hover {
+  background: #e2d2bb;
+
+  transform: rotate(90deg);
+}
+
+/* =========================
+ FORMULÁRIO
+========================= */
+
+.formulario {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+.formulario label {
+  margin-top: 8px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #705b4c;
+}
+
+.formulario input,
+.formulario textarea {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  border: 1px solid #d8cbb8;
+
+  border-radius: 6px;
+
+  outline: none;
+
+  background: #fffaf0;
+
+  color: #49372c;
+
+  font-family: inherit;
+
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+  border-color: #9b6b53;
+
+  box-shadow: 0 0 0 3px rgba(155, 107, 83, 0.12);
+}
+
+.formulario input {
+  height: 45px;
+}
+
+.formulario textarea {
+  min-height: 300px;
+
+  resize: none;
+
+  font-family: 'Segoe Print', 'Comic Sans MS', cursive;
+
+  line-height: 25px;
+}
+
+/* =========================
+ BOTÕES DO MODAL
+========================= */
+
+.modal-acoes {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 25px;
+}
+
+.btn-cancelar,
+.btn-salvar {
+  padding: 11px 18px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: background 0.2s, transform 0.2s;
+}
+
+/* CANCELAR */
+
+.btn-cancelar {
+  background: #eee4d2;
+
+  color: #705b4c;
+}
+
+.btn-cancelar:hover {
+  background: #e2d2bb;
+}
+
+/* SALVAR */
+
+.btn-salvar {
+  background: #6f8f72;
+
+  color: white;
+}
+
+.btn-salvar:hover {
+  background: #58755b;
+
+  transform: translateY(-2px);
+}
+
+/* =========================
+ TOAST
+========================= */
+
+.toast-container {
+  position: fixed;
+
+  right: 25px;
+  bottom: 25px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+  z-index: 2000;
+}
+
+.toast {
+  min-width: 270px;
+
+  padding: 14px 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  background: #fffdf3;
+
+  border-left: 5px solid #9b6b53;
+
+  border-radius: 6px;
+
+  color: #49372c;
+
+  box-shadow: 0 6px 20px rgba(50, 30, 20, 0.2);
+
+  animation: aparecer 0.3s ease;
+}
+
+.toast i {
+  color: #9b6b53;
+}
+
+/* Toast de sucesso */
+
+.toast.sucesso {
+  border-left-color: #6f8f72;
+}
+
+.toast.sucesso i {
+  color: #6f8f72;
+}
+
+/* Toast de erro */
+
+.toast.erro {
+  border-left-color: #b96b62;
+}
+
+.toast.erro i {
+  color: #b96b62;
+}
+
+/* =========================
+ ANIMAÇÕES
+========================= */
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateX(0);
+  }
+}
+
+@keyframes desaparecer {
+  from {
+    opacity: 1;
+
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+
+    transform: translateX(30px);
+  }
+}
+
+/* =========================
+ RESPONSIVO
+========================= */
+
+@media (max-width: 600px) {
+  .app {
+    width: 92%;
+
+    margin: 30px auto;
+  }
+
+  .topo {
+    margin-bottom: 25px;
+  }
+
+  .topo h1 {
+    font-size: 32px;
+  }
+
+  .btn-adicionar {
+    width: 50px;
+    height: 50px;
+
+    font-size: 19px;
+  }
+
+  .lista-notas {
+    grid-template-columns: 1fr;
+
+    gap: 22px;
+  }
+
+  .modal {
+    padding: 15px;
+  }
+
+  .modal-content {
+    padding: 22px;
+  }
+
+  .modal-header h2 {
+    font-size: 24px;
+  }
+
+  .modal-acoes {
+    flex-direction: column-reverse;
+  }
+
+  .btn-cancelar,
+  .btn-salvar {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .toast-container {
+    left: 20px;
+    right: 20px;
+
+    bottom: 20px;
+  }
+
+  .toast {
+    min-width: auto;
+
+    width: 100%;
+  }
+}

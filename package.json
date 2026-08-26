@@ -1,0 +1,15 @@
+{
+  "name": "meu-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.0",
+    "@capacitor/core": "^8.5.0",
+    "serve": "^14.2.4"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.0"
+  }
+}

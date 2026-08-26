@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Quick Notes</title>
+
+
+    <!-- =========================
+         FONT AWESOME
+    ========================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =========================
+         CSS
+    ========================== -->
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         APLICAÇÃO
+    ========================== -->
+
+    <main class="app">
+
+
+        <!-- =========================
+             TOPO
+        ========================== -->
+
+        <header class="topo">
+
+            <div>
+
+                <span class="subtitulo">
+                    MY LITTLE
+                </span>
+
+                <h1>
+                    Quick Notes
+                </h1>
+
+                <span
+                    id="contadorPaginas"
+                    class="contador-paginas"
+                >
+                    0 / 6 pages
+                </span>
+
+            </div>
+
+
+            <!-- BOTÃO ADICIONAR -->
+
+            <button
+                id="btnAdicionar"
+                class="btn-adicionar"
+                title="Nova nota"
+            >
+
+                <i class="fa-solid fa-plus"></i>
+
+            </button>
+
+        </header>
+
+
+        <!-- =========================
+             LISTA DE NOTAS
+        ========================== -->
+
+        <section
+            id="listaNotas"
+            class="lista-notas"
+        >
+
+            <!--
+                As notas serão criadas
+                pelo JavaScript aqui.
+            -->
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         MODAL
+    ========================== -->
+
+    <div
+        id="modal"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
+
+            <!-- =========================
+                 HEADER DO MODAL
+            ========================== -->
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-subtitulo">
+                        QUICK NOTES
+                    </span>
+
+                    <h2 id="modalTitulo">
+                        Create new note
+                    </h2>
+
+                </div>
+
+
+                <!-- FECHAR MODAL -->
+
+                <button
+                    id="btnFecharModal"
+                    class="btn-fechar"
+                    title="Fechar"
+                >
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =========================
+                 FORMULÁRIO
+            ========================== -->
+
+            <div class="formulario">
+
+
+                <!-- TÍTULO -->
+
+                <label for="inputTitulo">
+                    Title
+                </label>
+
+                <input
+                    type="text"
+                    id="inputTitulo"
+                    placeholder="Ex: Project ideas"
+                    maxlength="50"
+                >
+
+
+                <!-- TEXTO -->
+
+                <label for="inputTexto">
+                    Your note
+                </label>
+
+                <textarea
+                    id="inputTexto"
+                    placeholder="Write here"
+                    maxlength="1000"
+                ></textarea>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 BOTÕES DO MODAL
+            ========================== -->
+
+            <div class="modal-acoes">
+
+
+                <!-- CANCELAR -->
+
+                <button
+                    id="btnCancelar"
+                    class="btn-cancelar"
+                >
+
+                    Cancel
+
+                </button>
+
+
+                <!-- SALVAR -->
+
+                <button
+                    id="btnSalvar"
+                    class="btn-salvar"
+                >
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Create new note
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         TOASTS
+    ========================== -->
+
+    <div
+        id="toastContainer"
+        class="toast-container"
+    ></div>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
